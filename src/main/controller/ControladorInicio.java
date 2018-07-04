@@ -74,14 +74,14 @@ public class ControladorInicio implements Initializable {
         }catch(InterruptedException e ) {
             System.out.println("Thread Interrupted");
         }
-        mainApp.getMusic();
+       // mainApp.getMusic();
 
         Parent parent = FXMLLoader.load(mainApp.obtenerdirrectorio().getClass().getResource("fxml/pantallaMenu.fxml"));
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Scene scene = new Scene(parent);
         stage.setScene(scene);
-        reproductor reproductor = new reproductor();
-        reproductor.reproducir("fondojuego");
+        //reproductor reproductor = new reproductor();
+        //reproductor.reproducir("fondojuego");
     }
 
     @FXML

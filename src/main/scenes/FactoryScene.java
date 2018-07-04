@@ -17,21 +17,21 @@ public class FactoryScene {
 
                 try {
                     fxml = FXMLLoader.load(app.getClass().getResource("fxml/pantallaJuego.fxml"));
-                    return new JuegoScene(fxml);
+                    return new JuegoScene(fxml,3);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
             case MAIN:
                 try {
                     fxml = FXMLLoader.load(app.getClass().getResource("fxml/pantallaInicio.fxml"));
-                    return new JuegoScene(fxml);
+                    return new JuegoScene(fxml,1);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
             case SELLECCION:
                 try {
                     fxml = FXMLLoader.load(app.getClass().getResource("fxml/pantallaMenu.fxml"));
-                    return new JuegoScene(fxml);
+                    return new JuegoScene(fxml,2);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }

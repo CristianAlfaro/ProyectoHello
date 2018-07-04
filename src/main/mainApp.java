@@ -26,7 +26,7 @@ public class mainApp extends Application {
         primaryStage.setScene(FactoryScene.getScene(TypeScene.MAIN,this));
         primaryStage.initStyle(StageStyle.TRANSPARENT);
         primaryStage.show();
-        reproductor.reproducir("fondoinicio");
+        //reproductor.reproducir("fondoinicio");
     }
 
 
@@ -43,9 +43,9 @@ public class mainApp extends Application {
         return main;
     }
 
-    public static void getMusic(){
-        MediaPlayer mediaPlayer = reproductor.reproducir("fondoinicio").getMediaPlayer();
+    /*public static void getMusic(){
+       // MediaPlayer mediaPlayer = reproductor.reproducir("fondoinicio").getMediaPlayer();
         mediaPlayer.stop();
-    }
+    }*/
 
 }
