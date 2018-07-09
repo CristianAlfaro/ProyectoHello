@@ -21,11 +21,8 @@ public class Bomba{
         bombamob.setY(player.getY());
         tablero.getChildren().add(bombamob);
         Timeline timeline = new Timeline(
-
-                new KeyFrame(Duration.seconds(2), new KeyValue(bombamob.imageProperty(), bomba)),
-
-                new KeyFrame(Duration.seconds(3), new KeyValue(bombamob.imageProperty(), null))
-
+        new KeyFrame(Duration.seconds(2), new KeyValue(bombamob.imageProperty(), bomba)),
+        new KeyFrame(Duration.seconds(3), new KeyValue(bombamob.imageProperty(), null))
         );
         timeline.play();
 
