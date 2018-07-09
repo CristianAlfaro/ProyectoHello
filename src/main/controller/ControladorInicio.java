@@ -9,27 +9,17 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.image.ImageView;
-import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.media.MediaView;
 import javafx.stage.Stage;
 import main.Jugadores.Jugador1;
 import main.Jugadores.Jugador2;
 import main.Jugadores.Jugadores;
 import main.mainApp;
 import main.musica.reproductor;
-import main.scenes.FactoryScene;
-import main.scenes.TypeScene;
-import main.videos.videoreproductor;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class ControladorInicio implements Initializable {
 
@@ -49,8 +39,6 @@ public class ControladorInicio implements Initializable {
     @FXML private AnchorPane helpp1;
     @FXML private AnchorPane helpp2;
     @FXML private AnchorPane pantallacarga;
-    @FXML private MediaView mediaview;
-    @FXML private ImageView star;
 
 
     @FXML
@@ -61,6 +49,8 @@ public class ControladorInicio implements Initializable {
         stage.setX(event.getScreenX() - x);
         stage.setY(event.getScreenY() - y);
     }
+
+
     @FXML
     void pressed (MouseEvent event) {
         x = event.getSceneX();
@@ -73,49 +63,27 @@ public class ControladorInicio implements Initializable {
     }
     @FXML
     void saveplayers (MouseEvent event) throws Exception {
-        //reproductor Reproductor = mainApp.obtenerReproductor();
-        //Reproductor.reproducir("fondojuego").getMediaPlayer().stop();
-        //pantallaCarga();
-        //pantallacarga.setVisible(true);
-        try{
-            Thread.sleep(1000);
-            cerrarventana(event);
-        }catch(InterruptedException e ) {
-            System.out.println("Thread Interrupted");
-        }
-    }
-    @FXML
-    void cerrarventana(MouseEvent event){
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        stage.setScene(FactoryScene.getScene(TypeScene.SELLECCION, mainApp.getInstance()));
-        salvarNombres();
-    }
-    @FXML
-    public void salvarNombres (){
         player1 = textplayer1.getText();
         player2 = textplayer2.getText();
         p1.setNombre(player1);
         p2.setNombre(player2);
         System.out.println(p1.getNombre());
         System.out.println(p2.getNombre());
-    }
-
-    @FXML
-    private void  handleOnKeyReleased (KeyEvent event) {
-
-        if (event.getCode() == KeyCode.SPACE || event.getCode() == KeyCode.ENTER) {
-            try{
-                salvarNombres();
-                Thread.sleep(1000);
-                reproductor reproductor = new reproductor();
-                reproductor.reproducir("fondojuego");
-                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                stage.setScene(FactoryScene.getScene(TypeScene.SELLECCION, mainApp.getInstance()));
-            }catch(InterruptedException e ) {
-                System.out.println("Thread Interrupted");
-            }
+        try{
+            Thread.sleep(1000);
+        }catch(InterruptedException e ) {
+            System.out.println("Thread Interrupted");
         }
+        mainApp.getMusic();
+
+        Parent parent = FXMLLoader.load(mainApp.obtenerdirrectorio().getClass().getResource("fxml/pantallaMenu.fxml"));
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(parent);
+        stage.setScene(scene);
+        reproductor reproductor = new reproductor();
+        reproductor.reproducir("fondojuego");
     }
+
     @FXML
     void pantallaCarga (){
         pantallacarga.setVisible(true);
@@ -154,16 +122,10 @@ public class ControladorInicio implements Initializable {
         helpp2.setVisible(false);
     }
 
-    @FXML
-    void star (MouseEvent event){
-        mediaview.setVisible(false);
-        star.setVisible(false);
-    }
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        mediaview.setVisible(true);
-        mediaview.setMediaPlayer(videoreproductor.reproducir("videoinicio"));
-        star.setVisible(true);
+
     }
 
 }
