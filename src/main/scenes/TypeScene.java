@@ -1,5 +1,6 @@
 package main.scenes;
 
-public enum TypeScene {
+public enum TypeScene
+{
     MAIN, JUEGUITO, SELLECCION
 }

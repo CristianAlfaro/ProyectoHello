@@ -5,36 +5,33 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import main.musica.reproductor;
 
 import java.io.IOException;
 
 public class FactoryScene {
 
     public static Scene getScene(TypeScene type, Application app) {
-        Parent fxml;
+        Parent fxml = null;
         switch (type) {
             case JUEGUITO:
+
                 try {
                     fxml = FXMLLoader.load(app.getClass().getResource("fxml/pantallaJuego.fxml"));
-                    Scene j = new JuegoScene(fxml);
-                    return j;
+                    return new JuegoScene(fxml);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-                break;
             case MAIN:
                 try {
                     fxml = FXMLLoader.load(app.getClass().getResource("fxml/pantallaInicio.fxml"));
-                    return new Scene(fxml);
+                    return new JuegoScene(fxml);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-                break;
             case SELLECCION:
                 try {
                     fxml = FXMLLoader.load(app.getClass().getResource("fxml/pantallaMenu.fxml"));
-                    return new JuegoScene1(fxml);
+                    return new JuegoScene(fxml);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
